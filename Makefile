@@ -6,7 +6,7 @@
 #    By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 20:32:02 by joaosilva         #+#    #+#              #
-#    Updated: 2024/02/24 10:34:03 by joaosilva        ###   ########.fr        #
+#    Updated: 2024/02/24 13:19:35 by joaosilva        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,19 +57,28 @@ RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -O3 -g #-fsanitize=address
 
 # Variáveis/Caminho para MiniLibX no Linux
-MINILIBX_LINUX = -L minilibx-linux -lmlx -lXext -lX11
+#MINILIBX_LINUX = -L minilibx-linux -lmlx -lXext -lX11
 
 # Variáveis/CAminho para MiniLibX no macOS
-MINILIBX_MACOS = -L minilibx_opengl_20191021 -framework OpenGL -framework AppKit
+#MINILIBX_MACOS = -L minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit
 
 # Verifica o sistema operacional
 UNAME_S := $(shell uname -s)
 
+# este dá erro:  Escolhe as variáveis apropriadas com base no sistema operacional
+#ifeq ($(UNAME_S),Linux)
+#    MINILIBX = $(MINILIBX_LINUX)
+#else ifeq ($(UNAME_S),Darwin)
+#    MINILIBX = $(MINILIBX_MACOS)
+#else
+#    $(error Sistema operacional não suportado: $(UNAME_S))
+#endif
+
 # Escolhe as variáveis apropriadas com base no sistema operacional
 ifeq ($(UNAME_S),Linux)
-    MINILIBX = $(MINILIBX_LINUX)
+    MINILIBX = -L minilibx-linux -lmlx -lXext -lX11
 else ifeq ($(UNAME_S),Darwin)
-    MINILIBX = $(MINILIBX_MACOS)
+    MINILIBX = -L minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit
 else
     $(error Sistema operacional não suportado: $(UNAME_S))
 endif
@@ -83,8 +92,11 @@ ${NAME}: ${OBJS} ${HEADER}
 	@make -s -C get_next_line
 ifeq ($(UNAME_S),Linux)
 	@make -s -C minilibx-linux
-#else 
+else 
 #	@make -s -C minilibx_opengl_20191021
+#minilibx_macos:
+	@make -C minilibx_opengl_20191021
+	@echo "$(GREEN)\nCompilando MiniLibX para macOS...$(DEF_COLOR)"
 endif
 	@${CC} ${CFLAGS} ${INCLUDE} -o ${NAME} ${OBJS} ${LIBFT} ${GET_NEXT_LINE} ${MINILIBX}
 	@echo "$(GREEN)\n${NAME} created$(DEF_COLOR)"
@@ -125,10 +137,12 @@ clean:
 	@make fclean -s -C Libft
 	@make fclean -s -C get_next_line
 ifeq ($(UNAME_S),Linux)
-	@make clean -s -C minilibx-linux
+#	@make clean -s -C minilibx-linux
+	@${RM} -r minilibx-linux
 else ifeq ($(UNAME_S),Darwin)
 	@${RM} -r minilibx_opengl_20191021
 	@${RM} -r minilibx_opengl.tgz
+# @make clean -C minilibx_opengl_20191021
 # @make clean -s -C minilibx_opengl_20191021
 endif
 	@${RM} ${OBJS}
@@ -220,11 +234,13 @@ else
     DOWNLOAD_CMD := curl -LO
     TAR_CMD := tar -xzf
     MINILIBX_URL := https://cdn.intra.42.fr/document/document/21301/minilibx_opengl.tgz
+
 endif
 
 downloadminilibx:
 	@$(DOWNLOAD_CMD) $(MINILIBX_URL)
-	@$(TAR_CMD) $(notdir $(MINILIBX_URL))
+	@$(TAR_CMD) $(shell basename $(MINILIBX_URL))
+#	@$(TAR_CMD) $(notdir $(MINILIBX_URL))
 ifeq ($(UNAME_S),Linux)
 	@echo "$(GREEN)\n MINILIBX LINUX downloaded and folder created$(DEF_COLOR)"
 else

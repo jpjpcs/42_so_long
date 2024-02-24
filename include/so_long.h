@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:28:02 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/23 20:23:25 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/02/24 12:01:45 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../minilibx-linux/mlx.h"
 #elif defined(__APPLE__)
 #include "../minilibx_opengl_20191021/mlx.h"
-#include "../minilibx-linux/mlx.h"
 #endif
 
 
