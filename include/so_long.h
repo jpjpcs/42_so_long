@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:28:02 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/24 12:01:45 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/02/26 20:13:33 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef enum e_tile
 
 typedef struct s_point
 {
-	int	x;
+	int	x; // usado no chek_moves para "carregar" a posição para onde o player vai
 	int	y;
 }				t_point;
 
@@ -90,7 +90,7 @@ typedef struct s_dummies
 	t_point	current;
 	char	current_tile;
 	t_point	next;
-	int		img_index;
+	//int		img_index; //usado no key_press, para saber se jogador olha pa esq pu dir. nao preciso disto
 	int		collect;
 }				t_dummies;
 
@@ -99,7 +99,6 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	t_map		map;
-	int			moves;
 	t_dummies	player;
 	//t_img		img_p[SP_LEN];
 	int			player_count;
@@ -113,6 +112,7 @@ typedef struct s_game
 	t_img		img_player;
 	int			x;
 	int			y;
+	int			moves; //variável usada no print_moves, que imprime o num movimentos
 }				t_game;
 
 int		exit_error(t_game *game, char *msg);

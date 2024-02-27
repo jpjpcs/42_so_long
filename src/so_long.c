@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:44:03 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/23 20:18:47 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/02/26 15:45:11 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void so_long (char *file)
     check_map(&game);
     init_game(&game);
     //void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*f)(), void *param)
-	//mlx_hook(game.win, 2, 1L << 0, key_press, &game);
-	//mlx_hook(game.win, 17, 1L << 17, exit_esc, &game);
-	//mlx_loop(game.mlx);
+	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
+	mlx_hook(game.win, 17, 1L << 17, exit_esc, &game);
+	mlx_loop(game.mlx);
 }

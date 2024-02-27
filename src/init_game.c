@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:45:37 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/23 20:14:33 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/02/26 15:58:57 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void render_map(t_game *game, int y, int x)
     } 
 }
 
-
 static void check_textures (t_game *game)
 {
     if (!game->img_walls.img || !game->img_space.img || !game->img_exit.img || !game->img_collect.img || !game->img_player.img)
@@ -70,6 +69,6 @@ static void init_mlx_and_textures(t_game *game)
 
 void init_game (t_game *game)
 {
-    init_mlx_and_textures(game);
+    init_mlx_and_textures(game); //DÙVIDA: pq é que aqui passo game e na check_map(&game) ou mm na própria init_game(&game) passo com o &
     render_map(game, -1, -1);
 }

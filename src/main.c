@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:43:50 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/23 19:43:53 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/02/27 13:20:52 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int main (int ac, char **av)
 {
     size_t len;
     //t_game *game;
-
 
     check_args_num (ac); // changed the main, putting the checkers.c with the check functions: 1. check num args, 2. check_file name, 3. check file extension
     len = ft_strlen (av[1]); //LIBFT - o len está dps do check_args_num pq senão poderia dar segmentation fault se não existisse nenhum argumento. ao não existir, o strlen não iria ler ficheiro nenhum, mas iria tentar aceder causando segmentation fault.
