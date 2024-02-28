@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:45:37 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/26 15:58:57 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/02/27 19:06:26 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void render_map(t_game *game, int y, int x)
 static void check_textures (t_game *game)
 {
     if (!game->img_walls.img || !game->img_space.img || !game->img_exit.img || !game->img_collect.img || !game->img_player.img)
-    exit_error(game, "Textures loading failed.");
+        exit_error(game, "Textures loading failed.");
 }
 
 static void load_textures (t_game *game)

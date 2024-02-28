@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:45:43 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/27 13:35:53 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/02/28 21:31:46 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 #include "../include/so_long.h"
 
-static void	put_tile(t_game *game, char  current_tile, t_point point)
+//int mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y)
+static void	put_tile(t_game *game, char  tile, t_point point_location)
 {
-	if (current_tile == SPACE || current_tile == 0)
+	if (tile == SPACE || tile == 0)
         mlx_put_image_to_window(game->mlx, game->win,
-		    game->img_space.img, point.x * TILE_SIZE, point.y * TILE_SIZE);
-    else if (current_tile == EXIT)
+		    game->img_space.img, point_location.x * TILE_SIZE, point_location.y * TILE_SIZE);
+    else if (tile == EXIT)
         mlx_put_image_to_window(game->mlx, game->win,
-		    game->img_exit.img, point.x * TILE_SIZE, point.y * TILE_SIZE);
-    else if (current_tile == COLLECT) 
+		    game->img_exit.img, point_location.x * TILE_SIZE, point_location.y * TILE_SIZE);
+    else if (tile == COLLECT) 
         mlx_put_image_to_window(game->mlx, game->win,
-			game->img_collect.img, point.x * TILE_SIZE, point.y * TILE_SIZE);
-    else if (current_tile == PLAYER)
+			game->img_collect.img, point_location.x * TILE_SIZE, point_location.y * TILE_SIZE);
+    else if (tile == PLAYER)
         mlx_put_image_to_window(game->mlx, game->win,
 			game->img_player.img,
-			point.x * TILE_SIZE, point.y * TILE_SIZE);  
+			point_location.x * TILE_SIZE, point_location.y * TILE_SIZE);  
 }
 
-static void render_move (t_game *game, char current_tile, char next, t_dummies *dummy)
+static void render_move (t_game *game, char current_tile, char next_tile, t_dummies *dummy)
 {
     put_tile(game, current_tile, dummy->current);
-    put_tile(game, next, dummy->next);
+    put_tile(game, next_tile, dummy->next);
 }
 
 static void print_moves (t_game *game)
@@ -44,7 +45,7 @@ static void print_moves (t_game *game)
     ft_putnbr_fd(++game->moves, 1);
     ft_putchar_fd('\n', 1);   
 }
-
+//na função debaixo não colocamos if se for espaço pq se o tile para onde o player vai for espaço, não há problema o player mover-se para lá. apenas temos que atualizar o mapa com a nova posição do player e preenchendo a posição do espaço antiga pelo player. 
 static void check_move (t_game *game, int x, int y)
 {   
     if (game->map.grid[y][x] == WALL)
@@ -52,7 +53,7 @@ static void check_move (t_game *game, int x, int y)
     print_moves (game);
     if (game->map.grid[y][x] == COLLECT)
     {
-        game->map.grid[y][x] = SPACE;
+        game->map.grid[y][x] = SPACE; //DÚVIDA: pq é que aqui passamos o colectable a espaço? Não devíamos também ter um if para o espaço? Resposta: aqui passamos o collectable pq ele foi "apanhado" pelo rato, logo desapareceu.
         game->collect--;
     }
     if (game->map.grid[y][x] == EXIT && !game->collect)
@@ -60,7 +61,7 @@ static void check_move (t_game *game, int x, int y)
     if (game->map.grid[y][x] == EXIT)
         ft_printf("You´re not fat enough. You must eat all cheese. 🧀🧀🧀 ");
     game->player.next = (t_point) {x, y};
-    render_move (game, game->player.current_tile, PLAYER, &game->player);
+    render_move (game, game->player.current_tile, PLAYER, &game->player); //DÚVIDA: pq é que aqui se usa PLAYER. Pq mando p?
     game->map.grid[game->player.current.y][game->player.current.x] = game->player.current_tile;
     game->player.current = game->player.next;
     game->player.current_tile = game->map.grid [y][x];

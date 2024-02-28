@@ -6,17 +6,9 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:28:02 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/26 20:13:33 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/02/27 19:14:52 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifdef __linux__
-#include "../minilibx-linux/mlx.h"
-#elif defined(__APPLE__)
-#include "../minilibx_opengl_20191021/mlx.h"
-#endif
-
-
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -24,6 +16,12 @@
 # include "../Libft/libft.h"
 # include "../get_next_line/get_next_line_bonus.h"
 # include <fcntl.h>
+
+#ifdef __linux__
+#include "../minilibx-linux/mlx.h"
+#elif defined(__APPLE__)
+#include "../minilibx_opengl_20191021/mlx.h"
+#endif
 
 # define TILE_SIZE 32
 //# define SP_LEN 2 define o número de sprites usados. no caso de termos 2 players terá de ser 2. foi usado po bónus.
