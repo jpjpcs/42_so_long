@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:45:43 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/28 21:31:46 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/06 18:05:48 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void check_move (t_game *game, int x, int y)
         game->collect--;
     }
     if (game->map.grid[y][x] == EXIT && !game->collect)
-        ft_printf("Congratulations, Game ended! You have eaten all cheese 🧀🧀🧀. That´s why you´re fat. 🐁");
+        exit_game(game, "Congratulations, Game ended! You have eaten all cheese 🧀🧀🧀. That´s why you´re fat. 🐁");
     if (game->map.grid[y][x] == EXIT)
         ft_printf("You´re not fat enough. You must eat all cheese. 🧀🧀🧀 ");
     game->player.next = (t_point) {x, y};
