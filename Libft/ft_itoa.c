@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 15:16:46 by jode-jes          #+#    #+#             */
-/*   Updated: 2024/02/19 13:20:06 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/12 19:31:25 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ char	*ft_itoa(int n)
 	char	*c;
 	bool	sign;
 	int		len;
-	int base;
+	int		base;
 
-	base = 10; 
+	base = 10;
 	sign = n < 0;
 	len = ft_intlen(n, base) + sign;
 	c = (char *)malloc(sizeof(char) * (len + 1));

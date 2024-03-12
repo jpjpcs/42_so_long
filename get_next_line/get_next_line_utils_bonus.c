@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jode-jes <jode-jes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 03:05:50 by jode-jes          #+#    #+#             */
-/*   Updated: 2023/10/13 03:20:08 by jode-jes         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:32:29 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_gnl_strchr(char *stash, int target)
 		if ((unsigned char)stash[i] == (unsigned char)target)
 			return (&stash[i]);
 		i++;
-	}							
+	}
 	return (NULL);
 }
 

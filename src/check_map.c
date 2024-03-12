@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:45:11 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/02/23 19:45:13 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/12 18:28:13 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,19 +94,19 @@ static void	check_walls(t_game *game)
 
 	i = -1;
 	while (++i < game->map.rows)
-		if (game->map.grid[i][0] != WALL
-			|| game->map.grid[i][game->map.cols - 1] != WALL)
+		if (game->map.grid[i][0] != WALL || game->map.grid[i][game->map.cols
+			- 1] != WALL)
 			exit_error(game, "Map is not surrounded by walls.");
 	i = -1;
 	while (++i < game->map.cols)
-		if (game->map.grid[0][i] != WALL
-			|| game->map.grid[game->map.rows - 1][i] != WALL)
+		if (game->map.grid[0][i] != WALL || game->map.grid[game->map.rows
+			- 1][i] != WALL)
 			exit_error(game, "Map is not surrounded by walls.");
 }
 
 void	check_map(t_game *game)
 {
-    check_walls(game);
+	check_walls(game);
 	check_characters(game);
 	check_paths(game);
 }

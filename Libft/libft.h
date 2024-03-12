@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 10:00:31 by jode-jes          #+#    #+#             */
-/*   Updated: 2024/02/20 10:40:42 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/12 19:30:18 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ char	*ft_itoapositive(long long n);
 void	ft_free_array(char **array);
 void	ft_free_array_size(void **array, int size);
 
-
 // printf functions
 
 # ifndef BUFFER_SIZE
@@ -95,7 +94,6 @@ int		print_nbr(int n, int *flags);
 int		print_hex(unsigned int nbr, int *flags, const char c);
 int		print_unsigned(unsigned int n, int *flags);
 int		print_pointer(unsigned long long addr, int *flags);
-
 
 // Colors
 
@@ -152,8 +150,3 @@ int		print_pointer(unsigned long long addr, int *flags);
 # endif
 
 #endif
-
-
-
-
-
