@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:44:03 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/03/13 11:39:06 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/13 20:04:50 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ chek_map */
 // As colunas são os restantes caractéres da str.free(line);
 // DUVIDA verificação fd linha 76: tenho de colocar sempre esta verificação
 // cada vez que abro o fd? ou basta ter no check_file_open no main?
-// Comment linha 106:  em vez de (ft_strclen(line, '\n')
+// Comment linha 107:  em vez de (ft_strclen(line, '\n')
 // utilizei ft_strlen(line)
 // -(line[ft_strlen(line) - 1] == '\n')
 // retira o último \n ao ler com o strlen
@@ -50,7 +50,7 @@ chek_map */
 // Commment // podíamos verificar a quantidade de rows. deveria
 // ser 3 para o mapa ter à volta walls. mas aqui não
 // verifico isso pq a função só pode ter 25 linhas.
-// Função So_long linha 117:
+// Função So_long linha 120:
 // mudei o nome de check_get_grid para check_get_grid_dimensions
 // check_and_create_map
 // aqui tinha if (!check_get_grid_dimensions (&game, file))
@@ -101,6 +101,7 @@ int	check_get_grid_dimensions(t_game *game, char *file)
 	if (!game->map.cols)
 		exit_error(NULL, "Map is empty.");
 	game->map.rows = 0;
+	game->map.cols -= (line[ft_strlen(line) - 1] == '\n');
 	rectangle = TRUE;
 	while (line && ++game->map.rows)
 	{

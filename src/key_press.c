@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:45:43 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/03/13 11:38:33 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/13 19:57:29 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	check_move(t_game *game, int x, int y)
 	if (game->map.grid[y][x] == COLLECT)
 	{
 		game->map.grid[y][x] = SPACE;
-		logo desapareceu.game->collect--;
+		game->collect--;
 	}
 	if (game->map.grid[y][x] == EXIT && !game->collect)
 		exit_game(game, "Game ended! You have eaten all cheese 🧀🧀🧀 🐁");
