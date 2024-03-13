@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:44:03 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/03/12 19:55:48 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:39:06 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,15 @@ int	check_get_grid_dimensions(t_game *game, char *file)
 	if (fd == -1)
 		exit_error(NULL, "Couldn't open requested file.");
 	line = get_next_line(fd);
-	game->map.cols = ft_strlen(line)
+	game->map.cols = ft_strlen(line);
 	if (!game->map.cols)
 		exit_error(NULL, "Map is empty.");
 	game->map.rows = 0;
 	rectangle = TRUE;
 	while (line && ++game->map.rows)
 	{
-		if ((ft_strlen(line) - (line[ft_strlen(line) - 1] == '\n') != (size_t)game->map.cols))
+		if ((ft_strlen(line) - (line[ft_strlen(line)
+						- 1] == '\n') != (size_t)game->map.cols))
 			rectangle = FALSE;
 		free(line);
 		line = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:45:43 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/03/12 18:50:42 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:38:33 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // (void *mlx_ptr, void *win_ptr, void *img_ptr,int x, int y)
 // DÚVIDA linha 57: pq não se pode usar o printf("Moves:")?
 // temos de registar no ficheiro de saída. e se temos qual a razão?
-// comment linha 62: na função check_move não colocamos if se 
+// comment linha 62: na função check_move não colocamos if se
 // for espaço pq se o tile
 // para onde o player vai for espaço, não há problema o player mover
 // - se para lá.apenas temos que atualizar o mapa com a nova posição
@@ -76,7 +76,8 @@ static void	check_move(t_game *game, int x, int y)
 		ft_printf("You´re not fat enough. You must eat all cheese. 🧀🧀🧀 ");
 	game->player.next = (t_point){x, y};
 	render_move(game, game->player.current_tile, PLAYER, &game->player);
-	game->map.grid[game->player.current.y][game->player.current.x] = game->player.current_tile;
+	game->map.grid[game->player.current.y][game->player.current.x]
+		= game->player.current_tile;
 	game->player.current = game->player.next;
 	game->player.current_tile = game->map.grid[y][x];
 	game->map.grid[y][x] = PLAYER;
