@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:44:03 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/03/13 20:04:50 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/13 20:10:48 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ chek_map */
 // os ponteiros para as linhas, no while seguinte,
 // que faz calloc usando a função trim e retira o \n a seguir.
 // linha 81: o calloc acima aponta para primeiro ponteiro. este while
-// cria cada ponteiro da limha. Logo num mapa com 5 linhas,
+// cria cada ponteiro da linha. Logo num mapa com 5 linhas,
 // ele faz 5 mallocs(a trim usa malloc e não calloc).
 // só preciso de saber o num.de rows.ele aponta para o ponteiro
 // que está a apontar para o primeiro caracter da linha.
