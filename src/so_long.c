@@ -6,7 +6,7 @@
 /*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:44:03 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/03/13 20:10:48 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/27 14:11:22 by joaosilva        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ static void	create_map(t_game *game, char *file)
 int	check_get_grid_dimensions(t_game *game, char *file)
 {
 	int		fd;
-	int		rectangle;
 	char	*line;
 
 	fd = open(file, O_RDONLY);
@@ -102,7 +101,6 @@ int	check_get_grid_dimensions(t_game *game, char *file)
 		exit_error(NULL, "Map is empty.");
 	game->map.rows = 0;
 	game->map.cols -= (line[ft_strlen(line) - 1] == '\n');
-	rectangle = TRUE;
 	while (line && ++game->map.rows)
 	{
 		if ((ft_strlen(line) - (line[ft_strlen(line)
@@ -122,7 +120,8 @@ void	so_long(char *file)
 	t_game	game;
 
 	ft_bzero(&game, sizeof(t_game));
-	check_get_grid_dimensions(&game, file);
+	check_get_grid_dimensions(&game, file, TRUE);
+	create_map(&game, file);
 	check_map(&game);
 	init_game(&game);
 	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
