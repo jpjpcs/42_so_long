@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+         #
+#    By: jode-jes <jode-jes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 20:32:02 by joaosilva         #+#    #+#              #
-#    Updated: 2024/02/24 13:19:35 by joaosilva        ###   ########.fr        #
+#    Updated: 2024/03/27 17:27:57 by jode-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -139,6 +139,7 @@ clean:
 ifeq ($(UNAME_S),Linux)
 #	@make clean -s -C minilibx-linux
 	@${RM} -r minilibx-linux
+	@${RM} -r minilibx-linux.tgz
 else ifeq ($(UNAME_S),Darwin)
 	@${RM} -r minilibx_opengl_20191021
 	@${RM} -r minilibx_opengl.tgz
@@ -161,7 +162,7 @@ fclean: clean
 ###shell script para iniciar o jogo
 run:
 	@MAP_COUNT=$$(find maps -maxdepth 1 -type f | wc -l); \
-	read -p "Pick a map, options 0 to $$(($$MAP_COUNT-1)): " MAP_FILE; \
+	read -p "Pick a map, options 0 to $$(($$MAP_COUNT-2)): " MAP_FILE; \
 	if [ -x "so_long_bonus" ]; then \
 		./so_long_bonus maps/$$MAP_FILE.ber; \
 	elif [ ! -x "so_long" ]; then \

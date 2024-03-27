@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jode-jes <jode-jes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:45:24 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/03/12 18:29:46 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/27 16:32:48 by jode-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	free_game(t_game *game)
 			mlx_destroy_window(game->mlx, game->win);
 		if (game->mlx)
 		{
-			// mlx_destroy_display(game->mlx);
+			mlx_destroy_display(game->mlx);
 			free(game->mlx);
 		}
 	}
@@ -46,7 +46,7 @@ static void	free_game(t_game *game)
 int	exit_esc(t_game *game)
 {
 	ft_putendl_fd("You gave up! Nice. More 🧀 🧀 🧀 cheese left for me!", 1);
-	free(game);
+	free_game(game);
 	exit(EXIT_SUCCESS);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jode-jes <jode-jes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:44:03 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/03/27 14:11:22 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/27 16:00:25 by jode-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ chek_map */
 // reserva espaço de memória (aponta para a primeira
 // posição do bloco de memória,
 // e o que define qts passos/espaços posso dar/andar
-// é o malloc ou calloc através do size que lhe passamos...ou seja,
+// é o malloc ou calloc através do s42 headerize que lhe passamos...ou seja,
 // se for 2 char já sabe que anda 2 bytes ou seja 16 bits po lado.
 // se for int já sabe que são 4 bytes ou seja 32 bits) onde vou colocar
-// os ponteiros das linhas todos seguidinhos,
+// os ponteiros das linhas todos seg42 headeruidinhos,
 // o que me permite iterar entre eles. seguidamente são criados
 // os ponteiros para as linhas, no while seguinte,
 // que faz calloc usando a função trim e retira o \n a seguir.
@@ -87,7 +87,7 @@ static void	create_map(t_game *game, char *file)
 	close(fd);
 }
 
-int	check_get_grid_dimensions(t_game *game, char *file)
+int	check_get_grid_dimensions(t_game *game, char *file, int rectangle)
 {
 	int		fd;
 	char	*line;

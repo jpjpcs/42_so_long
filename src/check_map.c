@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaosilva <joaosilva@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jode-jes <jode-jes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:45:11 by joaosilva         #+#    #+#             */
-/*   Updated: 2024/03/12 18:28:13 by joaosilva        ###   ########.fr       */
+/*   Updated: 2024/03/27 16:23:33 by jode-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ static void	check_characters(t_game *game)
 			else if (game->map.grid[i][j] == COLLECT)
 				game->collect++;
 			else if (!ft_strchr(TILLES, game->map.grid[i][j]))
-				exit_error(game, "Map has invalid tiles.");
+				exit_error(game, "Invalid character in map.");
 		}
 	}
 	if (game->player_count != 1 || game->exit != 1 || game->collect < 1)
-		exit_error(game, "Map has invalid tiles.");
+		exit_error(game, "Wrong number of players, exits or collectibles.");
 }
 
 static void	check_walls(t_game *game)
