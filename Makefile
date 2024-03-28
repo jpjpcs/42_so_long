@@ -6,7 +6,7 @@
 #    By: jode-jes <jode-jes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 20:32:02 by joaosilva         #+#    #+#              #
-#    Updated: 2024/03/27 17:27:57 by jode-jes         ###   ########.fr        #
+#    Updated: 2024/03/28 11:28:05 by jode-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -176,7 +176,7 @@ run:
 ###shell script para iniciar o jogo
 runall:
 	@MAP_COUNT=$$(find maps -maxdepth 1 -type f | wc -l); \
-	read -p "Select starting map (0 to $$((MAP_COUNT-1))): " i; \
+	read -p "Select starting map (0 to $$((MAP_COUNT-2))): " i; \
 	while [ $$i -lt $$MAP_COUNT ]; do \
 		echo "$(CYAN)Running map $$i...$(DEF_COLOR)"; \
 		if [ -x "so_long_bonus" ]; then \
@@ -184,7 +184,7 @@ runall:
 		else \
 			output=$$(./so_long maps/$$i.ber); \
 		fi; \
-		echo "$$output" | grep -q "Congratulations! You have collected all cheese...nhami...nhami "; \
+		echo "$$output" | grep -q "Game ended! You have eaten all cheese 🧀🧀🧀 🐁"; \
 		if [ $$? -eq 0 ]; then \
 			echo "$(CYAN)\nMap $$i completed.$(DEF_COLOR)"; \
 			i=$$(($$i + 1)); \
