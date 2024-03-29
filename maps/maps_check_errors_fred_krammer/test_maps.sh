@@ -1,6 +1,3 @@
-# To run the program tester
-#./test_maps.sh
-
 #!/bin/bash
 
 # Define the colors
